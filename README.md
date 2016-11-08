@@ -1,0 +1,2 @@
+# thoughter
+Single Page Application that shows different views based on what was clicked in navigation has tests for functions exposed by modules uses Bootstrap Has jQuery Mocha and Chai will use Grunt to automate testing, code linting, and Sass. User can  view "Recent thoughts" showing them the last 20 thoughts in the system sorted in descending date order. The user can also go to a different view to post a new "thought". Once a new thought form has been successfully submitted, a user is sent to "All thoughts" view.
