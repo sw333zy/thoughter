@@ -12,7 +12,7 @@
       $('main').hide();
       $('' + window.location.hash).show();
 
-    
+
 
       if (window.location.hash === '#recent'){
        window.thoughter.getThoughts();

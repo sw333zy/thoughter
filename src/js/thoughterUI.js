@@ -5,33 +5,21 @@
         window.thoughter = window.thoughter || {};
 
         //window.thoughter.createThoughts = createThoughts;
-        //window.thoughter.getThoughts = getThoughts;
+        // window.thoughter.getThoughts = getThoughts;
         //window.thoughter.showThoughts = showThoughts;
         window.thoughter.appendThoughts = appendThoughts;
 
         $('.submit-form').on('submit', function formSubmission(event) {
             event.preventDefault();
-            window.thoughter.createThoughts();
-            $('#new').hide();
-            $('#recent').show();
+            window.thoughter.createThoughts()
+              .done(function viewSwitch(){
+                window.location.hash = '#recent';
+
+              });
+
 
         });
 
-        $('[href="#recent"]').on('click', function getThoughts(event) {
-            event.preventDefault();
-            $('#recent').show();
-            $('#new').hide();
-            window.thoughter.getThoughts();
-
-        });
-
-        $('[href="#new"]').on('click', function getThoughts(event) {
-            event.preventDefault();
-            $('#recent').hide();
-            $('#new').show();
-            
-
-        });
 
 
         // TODO: create a function to add thoughts to the page
