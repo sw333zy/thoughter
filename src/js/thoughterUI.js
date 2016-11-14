@@ -1,38 +1,58 @@
 (function() {
         'use strict';
 
-        'use strict';
+        //'use strict';
         window.thoughter = window.thoughter || {};
 
-        window.thoughter.createThoughts = createThoughts;
-        window.thoughter.getThoughts = getThoughts;
-        window.thoughter.showThoughts = showThoughts;
+        //window.thoughter.createThoughts = createThoughts;
+        //window.thoughter.getThoughts = getThoughts;
+        //window.thoughter.showThoughts = showThoughts;
+        window.thoughter.appendThoughts = appendThoughts;
 
         $('.submit-form').on('submit', function formSubmission(event) {
             event.preventDefault();
-            window.thoughter.createThought();
+            window.thoughter.createThoughts();
+            $('#new').hide();
+            $('#recent').show();
 
         });
 
-        $('.recent').on('click', function getThoughts(event) {
+        $('[href="#recent"]').on('click', function getThoughts(event) {
             event.preventDefault();
-            window.thoughter.getThoughts()
-                .done(function handleSuccess(data) {
-                    console.log('got data');
-                });
+            $('#recent').show();
+            $('#new').hide();
+            window.thoughter.getThoughts();
+
+        });
+
+        $('[href="#new"]').on('click', function getThoughts(event) {
+            event.preventDefault();
+            $('#recent').hide();
+            $('#new').show();
+            
+
         });
 
 
         // TODO: create a function to add thoughts to the page
         // function showThoughts(thoughts) {
         // loop
-        createThought.forEach(function(recentThoughts) {
-            console.log('it hit')
-                .$('#recent').click(function() {
-                    $('.recentThought').append($('<li>', {
-                        text: $('data').val()
-                    }));
-                });
+
+
+
+                function appendThoughts(thoughts){
+
+
+                  thoughts.forEach(function(thoughter) {
+                      console.log('it hit');
+                      console.log(thoughts);
+                      console.log(thoughter);
+                    $('.recentThought').append($('<li>' + thoughter.content +'</li>'));
+
+
+                  });
+                }
+
 
 
         }());

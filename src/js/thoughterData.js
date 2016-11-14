@@ -4,7 +4,7 @@
 
     window.thoughter.createThoughts = createThoughts;
     window.thoughter.getThoughts = getThoughts;
-    window.thoughter.showThoughts = showThoughts;
+    //window.thoughter.showThoughts = showThoughts;
 
     /**
      * Ajax call to create a new thought
@@ -36,39 +36,39 @@
 
     function getThoughts() {
 
-        return $.ajax({
+         $.ajax({
                 url: 'https://thoughter.herokuapp.com/api/Thoughts',
                 method: 'GET',
                 dataType: 'json',
-                headers: {
-                    'content-type': 'application/json'
-                }
+
             })
             .done(function handleSuccess(data) {
                 console.log('success', data);
+                window.thoughter.appendThoughts(data);
             })
             .fail(function handleFailure(xhr) {
                 console.log('failed', xhr);
             });
     }
 
-    function showThoughts() {
-
-        return $.ajax({
-                url: 'https://thoughter.herokuapp.com/api/Thoughts/',
-                method: 'GET',
-                dataType: 'json',
-                headers: {
-                    'content-type': 'application/json'
-                }
-            })
-            .done(function success(data) {
-                console.log('success', data);
-            })
-            .fail(function failure(xhr) {
-                console.log('failed', xhr);
-            });
-    }
+    // function showThoughts() {
+    //
+    //     return $.ajax({
+    //             url: 'https://thoughter.herokuapp.com/api/Thoughts/',
+    //             method: 'GET',
+    //             dataType: 'json',
+    //             headers: {
+    //                 'content-type': 'application/json'
+    //             }
+    //         })
+    //         .done(function success(data) {
+    //             console.log('success', data);
+    //             //window.thoughter.appendThoughts();
+    //         })
+    //         .fail(function failure(xhr) {
+    //             console.log('failed', xhr);
+    //         });
+    // }
 
 
 
