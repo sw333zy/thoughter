@@ -9,6 +9,23 @@
         });
 
     });
+
+    describe('jquery is loaded', function(){
+      it('it should load jquery', function(){
+        expect (window.onload = function() {
+            if (window.jQuery) {
+                // jQuery is loaded
+                console.log('yep');
+            } else {
+                // jQuery is not loaded
+                console.log('nope');
+            }
+        });
+      });
+    });
+
+
+
     // describe("thought list", function(){
     //      it("should obtain thoughts", function(asyncComplete){
     //        var result = window.thoughter.recentThought(); //returns xhr promise

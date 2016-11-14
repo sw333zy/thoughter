@@ -10,6 +10,16 @@
 
     });
 
+    window.onload = function() {
+    if (window.jQuery) {
+        // jquery is loaded
+        console.log('yep');
+    } else {
+        // jquery is not loaded
+        console.log('nope');
+    }
+};
+
 
 
 
