@@ -4,17 +4,15 @@
 
     window.thoughter.createThoughts = createThoughts;
     window.thoughter.getThoughts = getThoughts;
-    //window.thoughter.showThoughts = showThoughts;
+
 
     /**
      * Ajax call to create a new thought
-     * and put those into a <ul>
-     *  @param {String} createThought the value of the input
-     *  @return {[type]} [description]
+     *  @param {String} createThought string put in the input
+     *  @return {promise}  from ajax
      */
     function createThoughts() {
-
-        $.ajax({
+      return  $.ajax({
                 url: 'https://thoughter.herokuapp.com/api/Thoughts',
                 method: 'POST',
                 dataType: 'json',
@@ -33,10 +31,15 @@
             });
     }
 
-
-    function getThoughts() {
-
-         $.ajax({
+    /**
+     * get thoughts from api server
+     * @return {promise}
+     */
+     function getThoughts(othersThoughts) {
+       if (typeof(othersThoughts) !== 'number' || othersThoughts < 0 ){
+           othersThoughts = 20;
+       }
+       return   $.ajax({
                 url: 'https://thoughter.herokuapp.com/api/Thoughts',
                 method: 'GET',
                 dataType: 'json',
@@ -50,25 +53,7 @@
                 console.log('failed', xhr);
             });
     }
-
-    // function showThoughts() {
-    //
-    //     return $.ajax({
-    //             url: 'https://thoughter.herokuapp.com/api/Thoughts/',
-    //             method: 'GET',
-    //             dataType: 'json',
-    //             headers: {
-    //                 'content-type': 'application/json'
-    //             }
-    //         })
-    //         .done(function success(data) {
-    //             console.log('success', data);
-    //             //window.thoughter.appendThoughts();
-    //         })
-    //         .fail(function failure(xhr) {
-    //             console.log('failed', xhr);
-    //         });
-    // }
+    
 
 
 
