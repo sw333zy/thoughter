@@ -22,8 +22,7 @@
             console.log('it hit');
             console.log(thoughts);
             console.log(thoughter);
-            $('.recentThought').append($('<li>' + thoughter.content + '</li>'));
-            $('.recentThought').append($('<li>' + thoughter.createTime + '</li>'));
+            $('.recentThought').append($('<li class="panel panel-primary list-unstyled"><header class="panel-heading">'+ thoughter.createTime + '</header><article class="panel-body">' + thoughter.content + '</article></li>'));
 
         });
     }
