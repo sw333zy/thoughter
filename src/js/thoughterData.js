@@ -4,15 +4,13 @@
 
     window.thoughter.createThoughts = createThoughts;
     window.thoughter.getThoughts = getThoughts;
-
-
     /**
      * Ajax call to create a new thought
      *  @param {String} createThought string put in the input
      *  @return {promise}  from ajax
      */
     function createThoughts() {
-      return  $.ajax({
+        return $.ajax({
                 url: 'https://thoughter.herokuapp.com/api/Thoughts',
                 method: 'POST',
                 dataType: 'json',
@@ -30,19 +28,24 @@
                 console.log('failed', xhr);
             });
     }
-
     /**
      * get thoughts from api server
      * @return {promise}
      */
-     function getThoughts(othersThoughts) {
-       if (typeof(othersThoughts) !== 'number' || othersThoughts < 0 ){
-           othersThoughts = 20;
-       }
-       return   $.ajax({
-                url: 'https://thoughter.herokuapp.com/api/Thoughts',
+    function getThoughts(othersThoughts) {
+        if (typeof(othersThoughts) !== 'number' || othersThoughts < 0) {
+            othersThoughts = 20;
+        }
+        return $.ajax({
+                url: 'https://thoughter.herokuapp.com/api//Thoughts',
                 method: 'GET',
                 dataType: 'json',
+                data: {
+                  filter: {
+                    'limit': 20,
+                    'order': 'createTime DESC'
+                  }
+                }
 
             })
             .done(function handleSuccess(data) {
@@ -53,9 +56,4 @@
                 console.log('failed', xhr);
             });
     }
-
-
-
-
-
 }());
