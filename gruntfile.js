@@ -99,7 +99,7 @@ module.exports = function(grunt) {
 
 
 
-   grunt.registerTask('test', [ 'connect', 'mocha']); // add jshint back
+   grunt.registerTask('test', 'jshint', [ 'connect', 'mocha']); // add jshint back
    grunt.registerTask('default', ['clean', 'test', 'sass','copy', 'concat'] ); //add back tests
 
 
